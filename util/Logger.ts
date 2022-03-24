@@ -20,23 +20,33 @@
 /_/   /_/ |_/_____/_____/_____/\____/_/  /_/   /____/_____/
          Copyright © Freedom 25 - All Rights Reserved      */
 
+const {createLogger, format, transports} = require("winston");
+
 const PATH = require("path").resolve(".");
-const LOGGER = require(PATH + "/util/Logger.ts");
+const SECURITY = require(PATH + "/security.json");
 
-const {Client, Intents} = require('discord.js');
-const {token} = require(PATH + '/security.json');
-
-const BOT = new Client({
-    intents: [Intents.FLAGS.GUILDS]
+let logger = createLogger({
+    level: "info",
+    format: format.combine(
+        format.timestamp({
+            format: "YYYY-MM-DD HH:mm:ss"
+        }),
+        format.errors({stack: true}),
+        format.splat(),
+        format.prettyPrint()
+    )
 });
 
-BOT.once('ready', () => {
-    LOGGER.info("Bot Online");
+if (SECURITY.filelogging) {
+    logger.add(new transports.File({filename: "error.log", level: "error"}));
+    logger.add(new transports.File({filename: "combined.log"}));
+} else {
+    logger.add(new transports.Console({
+        format: format.combine(
+            format.colorize(),
+            format.simple()
+        )
+    }));
+}
 
-    BOT.once('error', e => {
-        LOGGER.error("Discord API Error: ", e);
-    })
-
-});
-
-BOT.login(token);
+module.exports = logger;
