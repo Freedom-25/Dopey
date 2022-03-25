@@ -20,24 +20,22 @@
 /_/   /_/ |_/_____/_____/_____/\____/_/  /_/   /____/_____/
       Copyright © 2022 Freedom 25 - All Rights Reserved    */
 
-import { Client } from "discord.js";
-import { Commands } from "../Commands";
-import { ACTIVITIES, GAMES } from "../constants/ActivityConstants";
+export const GAMES: object[] = [
+    { type: 'STREAMING', url: 'https://twitch.tv/sharp_ttv' },
+    { type: 'STREAMING', url: 'https://twitch.tv/sharp_ttv' },
+    { type: 'COMPETING' },
+    { type: 'WATCHING' },
+    { type: 'WATCHING' },
+    { type: 'PLAYING' },
+    { type: 'PLAYING'}
+]
 
-export default (client: Client): void => {
-    client.on("ready", async () => {
-        if (!client.user || !client.application) {
-            return;
-        }
-
-        await client.application.commands.set(Commands)
-
-        setInterval(() => {
-            let index: number = Math.floor(Math.random() * GAMES.length)
-            // @ts-ignore
-            client.user.setActivity(ACTIVITIES[index], GAMES[index]);
-        },60000);
-
-        console.log(`${client.user.username} is online`);
-    });
-};
+export const ACTIVITIES: string[] = [
+    'Ripped (2017)',
+    'Mac & Devin Go to High School',
+    'a smoke-off',
+    'for /help',
+    'for shit hawks',
+    'with hash',
+    'for the Stanley Bong'
+]

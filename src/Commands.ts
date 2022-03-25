@@ -22,6 +22,6 @@
 
 import { Command } from "./Command";
 import { TestDope } from "./commands/TestDope";
-import {Invite} from "./commands/Invite";
+import { Invite } from "./commands/Invite";
 
 export const Commands: Command[] = [TestDope, Invite];
