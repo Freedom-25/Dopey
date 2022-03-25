@@ -23,6 +23,22 @@
 import { Client } from "discord.js";
 import {Commands} from "../Commands";
 
+const GAMES: object[] = [
+    { type: 'STREAMING', url: 'https://twitch.tv/sharp_ttv' },
+    { type: 'COMPETING' },
+    { type: 'WATCHING' },
+    { type: 'PLAYING' },
+    { type: 'WATCHING' }
+]
+
+const ACTIVITIES: string[] = [
+    'Ripped (2017)',
+    'with Snoop Dogg',
+    'for /help',
+    'with hash',
+    'for shit hawks'
+]
+
 export default (client: Client): void => {
     client.on("ready", async () => {
         if (!client.user || !client.application) {
@@ -31,7 +47,12 @@ export default (client: Client): void => {
 
         await client.application.commands.set(Commands)
 
-        client.user.setActivity('for /help', { type: 'WATCHING' })
+        setInterval(() => {
+            let index: number = Math.floor(Math.random() * GAMES.length)
+            // @ts-ignore
+            client.user.setActivity(ACTIVITIES[index], GAMES[index]);
+        },60000);
+
         console.log(`${client.user.username} is online`);
     });
 };
