@@ -33,7 +33,7 @@ const GAMES: object[] = [
 
 const ACTIVITIES: string[] = [
     'Ripped (2017)',
-    'with Snoop Dogg',
+    'a smoke-off',
     'for /help',
     'with hash',
     'for shit hawks'
