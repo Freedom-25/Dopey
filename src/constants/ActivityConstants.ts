@@ -27,7 +27,7 @@ export const GAMES: object[] = [
     { type: 'WATCHING' },
     { type: 'WATCHING' },
     { type: 'PLAYING' },
-    { type: 'PLAYING'}
+    { type: 'PLAYING' }
 ]
 
 export const ACTIVITIES: string[] = [
