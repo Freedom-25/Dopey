@@ -31,6 +31,7 @@ export default (client: Client): void => {
 
         await client.application.commands.set(Commands)
 
+        client.user.setActivity('for /help', { type: 'WATCHING' })
         console.log(`${client.user.username} is online`);
     });
 };

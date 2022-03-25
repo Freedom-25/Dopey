@@ -20,8 +20,19 @@
 /_/   /_/ |_/_____/_____/_____/\____/_/  /_/   /____/_____/
       Copyright © 2022 Freedom 25 - All Rights Reserved    */
 
-import { Command } from "./Command";
-import { TestDope } from "./commands/TestDope";
-import {Invite} from "./commands/Invite";
+import { BaseCommandInteraction, Client } from "discord.js";
+import { Command } from "../Command";
 
-export const Commands: Command[] = [TestDope, Invite];
+export const Invite: Command = {
+    name: "invite",
+    description: "Invite Dopey to your server!",
+    type: "CHAT_INPUT",
+    run: async (client: Client, interaction: BaseCommandInteraction) => {
+        const content = "https://dopey.sharp.wtf/invite";
+
+        await interaction.followUp({
+            ephemeral: true,
+            content
+        });
+    }
+};
