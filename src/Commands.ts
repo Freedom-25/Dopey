@@ -23,6 +23,6 @@
 import { Command } from "./Command";
 import { TestDope } from "./commands/TestDope";
 import { Invite } from "./commands/Invite";
-import { EmbedTest } from "./commands/EmbedTest";
+import { About } from "./commands/About";
 
-export const Commands: Command[] = [TestDope, Invite, EmbedTest];
+export const Commands: Command[] = [TestDope, Invite, About];

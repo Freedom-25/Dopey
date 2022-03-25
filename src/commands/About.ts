@@ -20,28 +20,25 @@
 /_/   /_/ |_/_____/_____/_____/\____/_/  /_/   /____/_____/
       Copyright © 2022 Freedom 25 - All Rights Reserved    */
 
-import { BaseCommandInteraction, Client } from "discord.js";
+import {BaseCommandInteraction, Client, ColorResolvable, MessageEmbed, User} from "discord.js";
 import { Command } from "../Command";
-const { MessageEmbed } = require('discord.js');
 
-export const EmbedTest: Command = {
-    name: "embed",
-    description: "Sends a test embed.",
+export const About: Command = {
+    name: "about",
+    description: "View information about Dopey",
     type: "CHAT_INPUT",
     run: async (client: Client, interaction: BaseCommandInteraction) => {
+
+        let botUser: User = await client.user!.fetch(true);
+
+        // @ts-ignore
         const testEmbed = new MessageEmbed()
-            .setColor('#289548')
-            .setTitle('Test embed')
-            .setURL('https://dopey.sharp.wtf')
-            .setAuthor({ name: 'Dopey#4200', iconURL: 'https://dopey.sharp.wtf/dopey-green.png', url: 'https://dopey.sharp.wtf' })
-            .setDescription('This is where the description would go, and it is above anything else in the body of the embed.')
+            .setColor('B12525' as ColorResolvable)
+            .setAuthor({ name: botUser.username, iconURL: botUser.avatarURL(), url: 'https://dopey.sharp.wtf' })
             .addFields(
-                { name: 'Non-Inline field title', value: 'Value goes here' },
-                { name: '\u200B', value: '\u200B' }, // Creates blank space in embed
-                { name: 'Inline field title', value: 'Value goes here', inline: true },
-                { name: 'Second inline field title', value: 'Value goes here', inline: true }
+                { name: 'Dope', value: 'I love dope' }
             )
-            .setFooter({ text: 'Copyright © 2022 Freedom 25', iconURL: 'https://dopey.sharp.wtf/f25-text.png' })
+            .setFooter({ text: `Copyright © ${new Date().getFullYear()} Freedom 25`, iconURL: 'https://dopey.sharp.wtf/f25-text.png' })
             .setTimestamp();
 
 
