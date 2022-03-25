@@ -20,19 +20,27 @@
 /_/   /_/ |_/_____/_____/_____/\____/_/  /_/   /____/_____/
       Copyright © 2022 Freedom 25 - All Rights Reserved    */
 
-import {Client, Intents, ClientOptions} from "discord.js";
-import ready from "./src/listeners/Ready";
-import interactionCreate from "./src/listeners/InteractionCreate";
+import { BaseCommandInteraction, Client, Interaction } from "discord.js";
+import {Commands} from "../Commands";
 
-const fs = require('fs');
-const {token} = require('./security.json');
+export default (client: Client): void => {
+    client.on("interactionCreate", async (interaction: Interaction) => {
+        if (interaction.isCommand() || interaction.isContextMenu()) {
+            await handleSlashCommand(client, interaction);
+        }
+    });
+};
 
-const BOT = new Client({
-    intents: [Intents.FLAGS.GUILDS]
-});
+const handleSlashCommand = async (client: Client, interaction: BaseCommandInteraction): Promise<void> => {
+    const slashCommand = Commands.find(c => c.name === interaction.commandName);
+    if (!slashCommand) {
+        interaction.followUp({
+            content: "Error executing command"
+        });
+        return;
+    }
 
-ready(BOT);
-interactionCreate(BOT);
+    await interaction.deferReply();
 
-
-BOT.login(token);
+    slashCommand.run(client, interaction);
+};

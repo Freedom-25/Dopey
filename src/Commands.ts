@@ -20,19 +20,7 @@
 /_/   /_/ |_/_____/_____/_____/\____/_/  /_/   /____/_____/
       Copyright © 2022 Freedom 25 - All Rights Reserved    */
 
-import {Client, Intents, ClientOptions} from "discord.js";
-import ready from "./src/listeners/Ready";
-import interactionCreate from "./src/listeners/InteractionCreate";
+import { Command } from "./Command";
+import { TestDope } from "./commands/TestDope";
 
-const fs = require('fs');
-const {token} = require('./security.json');
-
-const BOT = new Client({
-    intents: [Intents.FLAGS.GUILDS]
-});
-
-ready(BOT);
-interactionCreate(BOT);
-
-
-BOT.login(token);
+export const Commands: Command[] = [TestDope];

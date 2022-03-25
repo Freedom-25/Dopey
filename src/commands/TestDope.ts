@@ -20,19 +20,19 @@
 /_/   /_/ |_/_____/_____/_____/\____/_/  /_/   /____/_____/
       Copyright © 2022 Freedom 25 - All Rights Reserved    */
 
-import {Client, Intents, ClientOptions} from "discord.js";
-import ready from "./src/listeners/Ready";
-import interactionCreate from "./src/listeners/InteractionCreate";
+import { BaseCommandInteraction, Client } from "discord.js";
+import { Command } from "../Command";
 
-const fs = require('fs');
-const {token} = require('./security.json');
+export const TestDope: Command = {
+    name: "testdope",
+    description: "test",
+    type: "CHAT_INPUT",
+    run: async (client: Client, interaction: BaseCommandInteraction) => {
+        const content = "Dope";
 
-const BOT = new Client({
-    intents: [Intents.FLAGS.GUILDS]
-});
-
-ready(BOT);
-interactionCreate(BOT);
-
-
-BOT.login(token);
+        await interaction.followUp({
+            ephemeral: true,
+            content
+        });
+    }
+};

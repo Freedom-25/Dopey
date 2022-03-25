@@ -20,33 +20,8 @@
 /_/   /_/ |_/_____/_____/_____/\____/_/  /_/   /____/_____/
       Copyright © 2022 Freedom 25 - All Rights Reserved    */
 
-const {createLogger, format, transports} = require("winston");
+import { BaseCommandInteraction, ChatInputApplicationCommandData, Client } from "discord.js";
 
-const PATH = require("path").resolve(".");
-const SECURITY = require(PATH + "/security.json");
-
-let logger = createLogger({
-    level: "info",
-    format: format.combine(
-        format.timestamp({
-            format: "YYYY-MM-DD HH:mm:ss"
-        }),
-        format.errors({stack: true}),
-        format.splat(),
-        format.prettyPrint()
-    )
-});
-
-if (SECURITY.filelogging) {
-    logger.add(new transports.File({filename: "error.log", level: "error"}));
-    logger.add(new transports.File({filename: "combined.log"}));
-} else {
-    logger.add(new transports.Console({
-        format: format.combine(
-            format.colorize(),
-            format.simple()
-        )
-    }));
+export interface Command extends ChatInputApplicationCommandData {
+    run: (client: Client, interaction: BaseCommandInteraction) => void;
 }
-
-module.exports = logger;

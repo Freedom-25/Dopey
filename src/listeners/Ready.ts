@@ -20,19 +20,17 @@
 /_/   /_/ |_/_____/_____/_____/\____/_/  /_/   /____/_____/
       Copyright © 2022 Freedom 25 - All Rights Reserved    */
 
-import {Client, Intents, ClientOptions} from "discord.js";
-import ready from "./src/listeners/Ready";
-import interactionCreate from "./src/listeners/InteractionCreate";
+import { Client } from "discord.js";
+import {Commands} from "../Commands";
 
-const fs = require('fs');
-const {token} = require('./security.json');
+export default (client: Client): void => {
+    client.on("ready", async () => {
+        if (!client.user || !client.application) {
+            return;
+        }
 
-const BOT = new Client({
-    intents: [Intents.FLAGS.GUILDS]
-});
+        await client.application.commands.set(Commands)
 
-ready(BOT);
-interactionCreate(BOT);
-
-
-BOT.login(token);
+        console.log(`${client.user.username} is online`);
+    });
+};
