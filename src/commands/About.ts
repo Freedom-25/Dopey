@@ -32,7 +32,7 @@ export const About: Command = {
         let botUser: User = await client.user!.fetch(true);
 
         // @ts-ignore
-        const testEmbed = new MessageEmbed()
+        const aboutEmbed = new MessageEmbed()
             .setColor('B12525' as ColorResolvable)
             .setAuthor({ name: botUser.username, iconURL: botUser.avatarURL(), url: 'https://dopey.sharp.wtf' })
             .addFields(
@@ -44,7 +44,7 @@ export const About: Command = {
 
         await interaction.followUp({
             ephemeral: true,
-            embeds: [testEmbed]
+            embeds: [aboutEmbed]
         });
     }
 };
