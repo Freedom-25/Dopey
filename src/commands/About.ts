@@ -33,7 +33,7 @@ export const About: Command = {
 
         // @ts-ignore
         const aboutEmbed = new MessageEmbed()
-            .setColor("B12525" as ColorResolvable)
+            .setColor("289548" as ColorResolvable)
             .setAuthor({ name: botUser.username, iconURL: botUser.avatarURL(), url: "https://dopey.sharp.wtf" })
             .addFields(
                 { name: "Dope", value: "I love dope" }
