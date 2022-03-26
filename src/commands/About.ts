@@ -46,6 +46,5 @@ export const About: Command = {
             ephemeral: true,
             embeds: [aboutEmbed]
         });
-        // aksdbj
     }
 };
