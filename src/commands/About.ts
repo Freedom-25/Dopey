@@ -33,12 +33,12 @@ export const About: Command = {
 
         // @ts-ignore
         const aboutEmbed = new MessageEmbed()
-            .setColor('B12525' as ColorResolvable)
-            .setAuthor({ name: botUser.username, iconURL: botUser.avatarURL(), url: 'https://dopey.sharp.wtf' })
+            .setColor("B12525" as ColorResolvable)
+            .setAuthor({ name: botUser.username, iconURL: botUser.avatarURL(), url: "https://dopey.sharp.wtf" })
             .addFields(
-                { name: 'Dope', value: 'I love dope' }
+                { name: "Dope", value: "I love dope" }
             )
-            .setFooter({ text: `Copyright © ${new Date().getFullYear()} Freedom 25`, iconURL: 'https://dopey.sharp.wtf/f25-text.png' })
+            .setFooter({ text: `Copyright © ${new Date().getFullYear()} Freedom 25`, iconURL: "https://dopey.sharp.wtf/f25-text.png" })
             .setTimestamp();
 
 

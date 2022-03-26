@@ -22,7 +22,7 @@
 
 import { Client } from "discord.js";
 import { Commands } from "../Commands";
-import { ACTIVITIES, GAMES } from "../constants/ActivityConstants";
+import { TYPES, ACTIVITIES } from "../constants/ActivityConstants";
 
 export default (client: Client): void => {
     client.on("ready", async () => {
@@ -32,10 +32,13 @@ export default (client: Client): void => {
 
         await client.application.commands.set(Commands)
 
+        if (TYPES.length !== ACTIVITIES.length) throw "Activity constants are mismatched";
+
         setInterval(() => {
-            let index: number = Math.floor(Math.random() * GAMES.length)
+            let index: number = Math.floor(Math.random() * TYPES.length)
+
             // @ts-ignore
-            client.user.setActivity(ACTIVITIES[index], GAMES[index]);
+            client.user.setActivity(ACTIVITIES[index], TYPES[index]);
         },60000);
 
         console.log(`${client.user.username} is online`);

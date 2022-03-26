@@ -20,22 +20,26 @@
 /_/   /_/ |_/_____/_____/_____/\____/_/  /_/   /____/_____/
       Copyright © 2022 Freedom 25 - All Rights Reserved    */
 
-export const GAMES: object[] = [
-    { type: 'STREAMING', url: 'https://twitch.tv/sharp_ttv' },
-    { type: 'STREAMING', url: 'https://twitch.tv/sharp_ttv' },
-    { type: 'COMPETING' },
-    { type: 'WATCHING' },
-    { type: 'WATCHING' },
-    { type: 'PLAYING' },
-    { type: 'PLAYING' }
+export const TYPES: object[] = [
+    { type: "STREAMING", url: "https://twitch.tv/sharp_ttv" },
+    { type: "STREAMING", url: "https://twitch.tv/sharp_ttv" },
+    { type: "COMPETING" },
+    { type: "WATCHING" },
+    { type: "WATCHING" },
+    { type: "PLAYING" },
+    { type: "PLAYING" },
+    { type: "LISTENING" },
+    { type: "LISTENING" }
 ]
 
 export const ACTIVITIES: string[] = [
-    'Ripped (2017)',
-    'Mac & Devin Go to High School',
-    'a smoke-off',
-    'for /help',
-    'for shit hawks',
-    'with hash',
-    'for the Stanley Bong'
+    "Ripped (2017)",
+    "Mac & Devin Go to High School",
+    "a smoke-off",
+    "for /help",
+    "for shit hawks",
+    "with hash",
+    "for the Stanley Bong",
+    "Detroit Velvet Smooth",
+    "Get My DJ Out Of Jail"
 ]

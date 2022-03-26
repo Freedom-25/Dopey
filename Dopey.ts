@@ -20,12 +20,11 @@
 /_/   /_/ |_/_____/_____/_____/\____/_/  /_/   /____/_____/
       Copyright © 2022 Freedom 25 - All Rights Reserved    */
 
-import {Client, Intents, ClientOptions} from "discord.js";
+import {Client, Intents} from "discord.js";
 import ready from "./src/listeners/Ready";
 import interactionCreate from "./src/listeners/InteractionCreate";
 
-const fs = require('fs');
-const {token} = require('./security.json');
+const {token} = require("./security.json");
 
 const BOT = new Client({
     intents: [Intents.FLAGS.GUILDS]
